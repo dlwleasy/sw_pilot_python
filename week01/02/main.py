@@ -12,6 +12,13 @@ try:
 
 except FileNotFoundError:
     print("Error: The log file does not exist.")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+except PermissionError:
+    print("파일에 접근할 권한이 없습니다.")
+except Exception as e:
+    print(f"알 수 없는 에러가 발생했습니다: {e}")
+
 
 
 # 첫째줄 제외 이중 리스트로 날짜 구분 및 (,) 기준 정보 구분하여 리스트 생성
