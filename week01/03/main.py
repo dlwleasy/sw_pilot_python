@@ -1,4 +1,5 @@
 # 03
+import csv
 
 with open("Mars_Base_Inventory_List.csv","r",encoding="utf-8") as file:
 
@@ -52,18 +53,29 @@ print("\n=== Flammability (인화성 목록) ===")
 print(Flammability[:5])
 
 # 정렬 
-Flammability_sorted=Flammability.sort()
+Flammability_float = [float(x) for x in Flammability]
+Flammability_float.sort(reverse=True)
+print("=== Flammability (인화성 목록) 정렬 ===")
+print(Flammability_float[:3])  # 정렬된 원본 리스트 출력
 
 # 0.7 이상
 danger_list=[]
-for i in range(len(Flammability_sorted)):
- if Flammability_sorted[i]>=0.7:
-    danger_list.append(Flammability_sorted)
-    print(Flammability_sorted)
+for i in range(len(Flammability_float)):
+ if Flammability_float[i]>=0.7:
+    danger_list.append(Flammability_float)
+print("=== Flammability (인화성 목록) 0.7 이상 ===")
+print(Flammability_float[:3])
 
 # csv 파일에 저장
-with open('Mars_Base_Inventory_danger.csv','w',encoding='utf-8') as file:
-   # (저장할데이터, 파일객체, 들여쓰기설정, 한글깨짐방지)
-    csv.dump(danger_list, file, indent=4, ensure_ascii=False)
+with open('Mars_Base_Inventory_danger.csv', 'w', encoding='utf-8', newline='') as file:
+    writer = csv.writer(file)
+    
+    # 헤더(컬럼 이름) 먼저 쓰기
+    writer.writerow(headers)
+    
+    # 0.7 이상 필터링 및 정렬된 전체 데이터 쓰기
+    writer.writerows(danger_list)
+
+print("Mars_Base_Inventory_danger.csv 파일 저장이 완료되었습니다!")
 
 

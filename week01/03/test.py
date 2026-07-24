@@ -73,4 +73,27 @@ print("\n=== Flammability (인화성 목록) ===")
 print(Flammability[:5])
 
 print("=== Flammability (인화성 목록) 정렬 ===")
-print(Flammability.sort())
+# print(Flammability.sort())# 1. 실수(float)로 변환된 숫자를 담을 빈 리스트를 미리 만듭니다.
+Flammability_float = []
+
+# 2. 기존 문자열 리스트(Flammability)에서 항목을 하나씩 꺼냅니다.
+for x in Flammability:
+    # 3. 문자열(예: '0.85')을 실수(0.85)로 변환합니다.
+    num = float(x)
+    
+    # 4. 변환된 숫자를 새 리스트에 하나씩 집어넣습니다.
+    Flammability_float.append(num)
+
+# # 정렬 
+Flammability_float = [float(x) for x in Flammability]
+Flammability_float.sort(reverse=True)
+print("=== Flammability (인화성 목록) 정렬 ===")
+print(Flammability_float[:3])  # 정렬된 원본 리스트 출력
+
+# 0.7 이상
+danger_list=[]
+for i in range(len(Flammability_float)):
+ if Flammability_float[i]>=0.7:
+    danger_list.append(Flammability_float)
+print("=== Flammability (인화성 목록) 0.7 이상 ===")
+print(Flammability_float[:3])
