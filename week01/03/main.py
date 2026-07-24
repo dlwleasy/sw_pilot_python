@@ -16,7 +16,7 @@ with open("Mars_Base_Inventory_List.csv","r",encoding="utf-8") as file:
 
 
 # 배열 명 만들기 : Substance,Weight (g/cm³),Specific Gravity,Strength,Flammability
-for name in file_name:
+for name in file_name.split(","):
    name=[]
 
 # 전체 리스트로 만들기 [1,2,3,4,5,6,7,8,9,10]->[하나씩 가져와서 배열에 넣기]
@@ -31,8 +31,7 @@ k=0
 for line in list:
   line=line.split(",")
   for k in range(len(list)):
-    name[i]=name[i].extend(line[k][i])
-    k+=1
+    name[i]=name[i].extend(line[i])
   i+=1
 
 # 배열 결과
