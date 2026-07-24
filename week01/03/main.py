@@ -5,8 +5,8 @@ with open("Mars_Base_Inventory_List.csv","r",encoding="utf-8") as file:
 
     file_name=file.readline() #2
     print(file_name) #2
-    csv=file.read()
-    print(csv) #1
+    csv_text = file.read().strip()    
+    print(csv_text) #1
     
 
 
@@ -33,7 +33,7 @@ Flammability = columns[4]
 
 # 전체 리스트로 만들기 [1,2,3,4,5,6,7,8,9,10]->[하나씩 가져와서 배열에 넣기]
 
-rows_list=csv.split("\n") #1
+rows_list=csv_text.split("\n") #1
 # 배열에 넣기
 # 3. 배열(컬럼)에 데이터 넣기
 for line in rows_list:
@@ -69,12 +69,8 @@ print(Flammability_float[:3])
 # csv 파일에 저장
 with open('Mars_Base_Inventory_danger.csv', 'w', encoding='utf-8', newline='') as file:
     writer = csv.writer(file)
-    
-    # 헤더(컬럼 이름) 먼저 쓰기
-    writer.writerow(headers)
-    
-    # 0.7 이상 필터링 및 정렬된 전체 데이터 쓰기
-    writer.writerows(danger_list)
+    writer.writerow(headers)       # 헤더 작성
+    writer.writerows(danger_list)  # 0.7 이상인 전체 데이터 작성
 
 print("Mars_Base_Inventory_danger.csv 파일 저장이 완료되었습니다!")
 
