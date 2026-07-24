@@ -6,7 +6,6 @@ def sphere_area(diameter, material, thickness=1):
     area = 2 * 3.14159 * (radius ** 2)  # 반구체 면적 공식: 2πr^2
     return {"재질": material,"지름":diameter, "면적": round(area, 3), "두께": thickness}
 
-
 # material,diameter = 사용자 입력 (기본값 material=유리, thickness=1)
 input_materal = input("재질을 입력하세요(사용할 수 있는 재로 :유리, 탄소강, 알루미늄): ").strip()
 input_diameter = input("지름을 입력하세요 : ").strip()
