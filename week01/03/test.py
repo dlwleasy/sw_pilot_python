@@ -52,17 +52,25 @@ Flammability = columns[4]
 
 # 전체 리스트로 만들기 [1,2,3,4,5,6,7,8,9,10]->[하나씩 가져와서 배열에 넣기]
 
-list=[]
-list=csv.split("\n") #1
-
+rows_list=csv.split("\n") #1
 # 배열에 넣기
-i=0
-
-for line in list:
-  line=line.split(",")
-  for k in range(len(list)):
-    columns[i]=columns[i].extend(line[i])
-    print(columns[i])
-  i+=1
+# 3. 배열(컬럼)에 데이터 넣기
+for line in rows_list:
+    if not line.strip(): # 빈 줄은 건너뛰기
+        continue
+    
+    items = line.split(",") # 쉼표 기준으로 컬럼 분리 (예: ['Alcohol', '0.789', ...])
+    
+    # 한 줄 안에서 0번부터 4번 컬럼까지 순서대로 각 columns 리스트에 append
+    for i in range(len(headers)):
+        columns[i].append(items[i])
 
 # 배열 결과
+# print("=== Substance (물질명 목록) ===")
+# print(Substance)
+
+print("\n=== Flammability (인화성 목록) ===")
+print(Flammability[:5])
+
+print("=== Flammability (인화성 목록) 정렬 ===")
+print(Flammability.sort())

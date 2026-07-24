@@ -16,7 +16,14 @@ with open("Mars_Base_Inventory_List.csv","r",encoding="utf-8") as file:
 
 
 # 배열 명 만들기 : Substance,Weight (g/cm³),Specific Gravity,Strength,Flammability
+headers = file_name.split(",")
+
+# 헤더 개수만큼 빈 리스트 생성
 columns = []
+for h in headers:
+    columns.append([])
+
+
 Substance = columns[0]
 Weight = columns[1]
 Specific_Gravity = columns[2]
@@ -25,22 +32,24 @@ Flammability = columns[4]
 
 # 전체 리스트로 만들기 [1,2,3,4,5,6,7,8,9,10]->[하나씩 가져와서 배열에 넣기]
 
-list=[]
-list=csv.split("\n") #1
-
+rows_list=csv.split("\n") #1
 # 배열에 넣기
-i=0
-
-for line in list:
-  line=line.split(",")
-  for k in range(len(list)):
-    columns[i]=columns[i].extend(line[i])
-  i+=1
+# 3. 배열(컬럼)에 데이터 넣기
+for line in rows_list:
+    if not line.strip(): # 빈 줄은 건너뛰기
+        continue
+    
+    items = line.split(",") # 쉼표 기준으로 컬럼 분리 (예: ['Alcohol', '0.789', ...])
+    
+    # 한 줄 안에서 0번부터 4번 컬럼까지 순서대로 각 columns 리스트에 append
+    for i in range(len(headers)):
+        columns[i].append(items[i])
 
 # 배열 결과
-for i in range(len(name)):
-    print(name[i])
-
+print("=== Substance (물질명 목록) ===")
+print(Substance[:5])
+print("\n=== Flammability (인화성 목록) ===")
+print(Flammability[:5])
 
 # 정렬 
 Flammability_sorted=Flammability.sort()
