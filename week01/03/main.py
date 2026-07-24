@@ -59,19 +59,23 @@ print("=== Flammability (인화성 목록) 정렬 ===")
 print(Flammability_float[:3])  # 정렬된 원본 리스트 출력
 
 # 0.7 이상
-danger_list=[]
-for i in range(len(Flammability_float)):
- if Flammability_float[i]>=0.7:
-    danger_list.append(Flammability_float)
-print("=== Flammability (인화성 목록) 0.7 이상 ===")
-print(Flammability_float[:3])
+# 1. 0.7 이상인 '전체 행(line)' 데이터만 골라내기
+danger_list = []
+for line in rows_list:
+    if not line.strip():
+        continue
+    items = line.split(",")
+    # 5번째 항목(items[4])인 인화성 지수를 float로 바꾸어 비교
+    if float(items[4]) >= 0.7:
+        danger_list.append(items)  # 한 줄 전체(['Alcohol', '0.789', ...])를 추가!
 
-# csv 파일에 저장
+# 2. 인화성 지수(4번 인덱스) 기준으로 내림차순 정렬
+danger_list.sort(key=lambda x: float(x[4]), reverse=True)
+
+# 3. CSV 저장
 with open('Mars_Base_Inventory_danger.csv', 'w', encoding='utf-8', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(headers)       # 헤더 작성
-    writer.writerows(danger_list)  # 0.7 이상인 전체 데이터 작성
-
-print("Mars_Base_Inventory_danger.csv 파일 저장이 완료되었습니다!")
+    writer.writerow(headers)
+    writer.writerows(danger_list)  # 완벽한 2차원 배열 데이터가 저장됨!
 
 
