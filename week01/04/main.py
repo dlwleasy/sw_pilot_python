@@ -33,18 +33,19 @@ print(f"반구체의 돔 면적은 {area:.3f}입니다.")
 
 # 2. 무게 재계산
 
+# 기존 무게
+weight_on_earth = {"유리": 2.4, "알루미늄": 2.7, "탄소강": 7.85}  # 단위: g/cm^3
+weight_on_mars = {}
 # 화성의 중력을 반영한 무게 재계산 
 def calculate_weight_on_mars(weight_on_earth):
-    gravity_earth = 9.81  # 지구 중력 가속도 (m/s^2)
-    gravity_mars = 3.71   # 화성 중력 가속도 (m/s^2)
-    
-    weight_on_mars = {}
-    for material, weight in weight_on_earth.items():
-        #  소수점 이하 세 자리까지만 출력
-        weight_on_mars[material] = weight * (gravity_mars / gravity_earth)
-
+    print("화성에서의 무게")
+    for name,weight in weight_on_earth.items():
+        # weight_on_earth[weight] = weight_on_earth[weight] * (3.71 / 9.81)  # 화성 중력 가속도 / 지구 중력 가속도
+        weight_on_mars[name] =round(weight * 0.378, 3) # 화성 중력 가속도 / 지구 중력 가속도
+        print(f" {name} : {weight_on_mars[name]:.3f}입니다.")
     
     return weight_on_mars
-weight_on_earth = {"유리": 2.4, "알루미늄": 2.7, "탄소강": 7.85}  # 단위: g/cm^3
-calculate_weight_on_mars(weight_on_earth)
+
+weight=calculate_weight_on_mars(weight_on_earth)
+print(weight)
   
