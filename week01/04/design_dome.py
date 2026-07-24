@@ -1,6 +1,4 @@
 
-
-
 # 1. 결정되는거 : 재질, 지름,두께,면적
 # 반구체의 돔 면적 구하기
 def sphere_area(diameter, material, thickness=1):
@@ -8,13 +6,10 @@ def sphere_area(diameter, material, thickness=1):
     area = 2 * 3.14159 * (radius ** 2)  # 반구체 면적 공식: 2πr^2
     return {"재질": material,"지름":diameter, "면적": round(area, 3), "두께": thickness}
 
-# material,diameter = 사용자 입력
-# 기본값 material=유리, thickness=1
 
+# material,diameter = 사용자 입력 (기본값 material=유리, thickness=1)
 input_materal = input("재질을 입력하세요(사용할 수 있는 재로 :유리, 탄소강, 알루미늄): ").strip()
 input_diameter = input("지름을 입력하세요 : ").strip()
-
-# material = input_materal if input_materal else "유리"
 
 # 사용 할 수 있는 재료 : 유리, 알루미늄, 탄소강
 if input_materal not in ["유리", "알루미늄", "탄소강"]:
@@ -22,7 +17,7 @@ if input_materal not in ["유리", "알루미늄", "탄소강"]:
 else :
     material = input_materal
 
-
+# 지름 조건
 try:
     diameter = float(input_diameter)
 except input_diameter == 0:
@@ -31,7 +26,7 @@ except ValueError:
     print("지름은 숫자로 입력해야 합니다.")
 
 # 구하기 - 면적
-info=sphere_area(diameter=diameter, material=material)
+info = sphere_area(diameter=diameter, material=material)
 # print(f"반구체의 돔 면적은 {area:.3f}입니다.")
 
 # 2. 무게 재계산
@@ -49,8 +44,7 @@ def calculate_weight_on_mars(weight_on_earth):
     
     return weight_on_mars
 
-weight=calculate_weight_on_mars(weight_on_earth)
-# print(weight)
+weight=calculate_weight_on_mars(weight_on_earth) # print(weight)
 
 
 # 전역변수에 지정
