@@ -11,31 +11,28 @@ try:
 
 
 except FileNotFoundError:
-    print("Error: The log file does not exist.")
-except Exception as e:
-    print(f"An unexpected error occurred: {e}")
+    print("파일이 존재하지 않습니다.")
 except PermissionError:
     print("파일에 접근할 권한이 없습니다.")
 except Exception as e:
     print(f"알 수 없는 에러가 발생했습니다: {e}")
 
 
-
-# 첫째줄 제외 이중 리스트로 날짜 구분 및 (,) 기준 정보 구분하여 리스트 생성
-
-log_list = logs.splitlines()
-# print(log_list)
+log_list = logs.splitlines() # 문자열 logs -> list에 날짜별로 저장 :  print(log_list) //['2023-08-27 10:00:00,INFO,Rocket initialization process started.',]
 list=[]
-for line in log_list:
- list.append(line.split(","))
-print(list)
+for line in log_list: # 현재 날짜별로 하나씩 가져와서
+ list.append(line.split(",")) # 각 항목별 구분하여 리스트에 저장
+pprint(list[:2],width=200)  # [['2023-08-27 10:00:00', 'INFO', 'Rocket initialization process started.'], ['2023-08-27 10:02:00', 'INFO', 'Power systems online. Batteries at optimal charge.']]
 
 # 시간 역순으로 정렬 list.reverse()
 list.reverse()
-# pprint(list,width=100)
+print("=========시간 역순 정렬=========")
+pprint(list[:3],width=100)
+
 
 # 사전 객체 전환 : 리스트의 값에 무엇을 의미하는지 키(이름) 지정
 dict_list=[]
+list.reverse()
 
 for line in list:
     log_dict = {
@@ -45,7 +42,7 @@ for line in list:
        
     }
     dict_list.append(log_dict)
-pprint(dict_list)
+print(dict_list[:3])
 
 
 # mission_computer_main.json 파일로 저장하는데

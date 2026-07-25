@@ -52,7 +52,4 @@ diameter=info["지름"]
 thickness=info["두께"]
 area=info["면적"]
 weight=weight[materal]
-print(f"재질 : {materal}, 지름 : {diameter}, 두께 : {thickness}, 면적 : {area}, 무게 : {weight}")
-
-
-
+print(f"재질 => {materal}, 지름 =>{diameter}, 두께 => {thickness}, 면적 => {area}, 무게 => {weight}")
