@@ -4,8 +4,8 @@ import json  # 1. 파이썬 기본 json 모듈 불러오기
 
 try:
     with open('mission_computer_main.log','r',encoding='utf-8') as file:
-        keys = file.readline().strip().split(",") # 첫째줄 제외
-        logs = file.read()
+        keys = file.readline().strip().split(",") #첫째줄 제외
+        logs =file.read()
        # print(keys)
        # print(logs)
 
@@ -23,7 +23,7 @@ except Exception as e:
 
 # 첫째줄 제외 이중 리스트로 날짜 구분 및 (,) 기준 정보 구분하여 리스트 생성
 
-log_list = logs.splitlines() 
+log_list = logs.splitlines()
 # print(log_list)
 list=[]
 for line in log_list:
