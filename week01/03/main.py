@@ -9,7 +9,6 @@ with open("Mars_Base_Inventory_List.csv","r",encoding="utf-8") as file:
     print(csv_text) #1
     
 
-
 # Substance,Weight (g/cm³),Specific Gravity,Strength,Flammability
 # Alcohol,0.789,0.79,Very weak,0.85
 # Petroleum Products,Various,Various,Various,0.92
