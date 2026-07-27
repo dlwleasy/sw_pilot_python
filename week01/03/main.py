@@ -7,15 +7,10 @@ with open("Mars_Base_Inventory_List.csv","r",encoding="utf-8") as file:
     print(file_name) #2
     csv_text = file.read().strip()    
     print(csv_text) #1
-    
 
+
+# 배열 명 만들기 :
 # Substance,Weight (g/cm³),Specific Gravity,Strength,Flammability
-# Alcohol,0.789,0.79,Very weak,0.85
-# Petroleum Products,Various,Various,Various,0.92
-# Gasoline,Various,Various,Various,0.91
-
-
-# 배열 명 만들기 : Substance,Weight (g/cm³),Specific Gravity,Strength,Flammability
 headers = file_name.split(",")
 
 # 헤더 개수만큼 빈 리스트 생성
@@ -57,8 +52,8 @@ Flammability_float.sort(reverse=True)
 print("=== Flammability (인화성 목록) 정렬 ===")
 print(Flammability_float[:3])  # 정렬된 원본 리스트 출력
 
-# 0.7 이상
-# 1. 0.7 이상인 '전체 행(line)' 데이터만 골라내기
+
+# 1. 0.7 이상
 danger_list = []
 for line in rows_list:
     if not line.strip():
@@ -75,6 +70,6 @@ danger_list.sort(key=lambda x: float(x[4]), reverse=True)
 with open('Mars_Base_Inventory_danger.csv', 'w', encoding='utf-8', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(headers)
-    writer.writerows(danger_list)  # 완벽한 2차원 배열 데이터가 저장됨!
+    writer.writerows(danger_list) 
 
 
