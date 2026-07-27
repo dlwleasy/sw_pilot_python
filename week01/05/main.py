@@ -28,12 +28,3 @@ with open("parts_to_work_on.csv", mode="w", newline="", encoding="utf-8") as fil
 
     print("저장 완료")
 
-
-# # 3-1
-# keys = parts[:,0]
-# values = parts[:,1].astype(int)
-
-# group_key=np.unique(keys)
-
-# for key in group_key:
-#     mean=values[keys==key]
