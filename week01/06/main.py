@@ -2,7 +2,7 @@ import random
 
 class DummySensor:
 
-    def init(self):
+    def __init__(self):
         # 멤버(인스턴스 변수)로 env_values 사전 객체를 초기화
         self.env_values = {
             'mars_base_internal_temperature': None,
