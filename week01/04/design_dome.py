@@ -29,8 +29,6 @@ info = sphere_area(diameter=diameter, material=material)
 # print(f"반구체의 돔 면적은 {area:.3f}입니다.")
 
 # 2. 무게 재계산
-
-# 기존 무게
 weight_on_earth = {"유리": 2.4, "알루미늄": 2.7, "탄소강": 7.85}  # 단위: g/cm^3
 weight_on_mars = {}
 # 화성의 중력을 반영한 무게 재계산 
