@@ -22,7 +22,7 @@ class MissionComputer:
             # 동작 2 : 값 저장하기
             #info_json=json.dumps(self.env_values,indent=4,ensure_ascii=False)
             #print(info_json)
-            print(json.dump(self.env_values,indent=4,ensure_ascii=False))
+            print(json.dumps(self.env_values,indent=4,ensure_ascii=False))
 
             time.sleep(5)
             ans=input("계속 하시겠습니까? (y/n) : ").lower()
@@ -61,7 +61,7 @@ class DummySensor:
 
 ds=DummySensor()
 RunComputer=MissionComputer() # 인스턴스화
-MissionComputer.get_sensor_data() 
+RunComputer.get_sensor_data() 
 
 # 현재코드 파일 저장
 with open(__file__, 'r', encoding='utf-8') as current_file:
