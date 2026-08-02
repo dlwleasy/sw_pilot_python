@@ -3,27 +3,33 @@ import csv
 # 1
 file_list = ['mars_base_main_parts-001.csv','mars_base_main_parts-002.csv','mars_base_main_parts-003.csv']
 
-arr1 = np.loadtxt(file_list[0],dtype='str', delimiter=',', encoding='utf-8', skiprows=1)
-arr2 = np.loadtxt(file_list[1],dtype='str', delimiter=',', encoding='utf-8', skiprows=1)
-arr3 = np.loadtxt(file_list[2],dtype='str', delimiter=',', encoding='utf-8', skiprows=1)
+arrays = []
+for file in file_list:
+  arr=np.loadtxt(file,dtype='str', delimiter=',', encoding='utf-8', skiprows=1)
+  arrays.append(arr)
 
-# 2
-parts = np.vstack((arr1,arr2,arr3))
+parts = arrays[0][:,0] 
+strength1=arrays[0][:,1].astype(int)
+strength2=arrays[1][:,1].astype(int)
+strength3=arrays[2][:,1].astype(int)
 
-# 3 
-# -> 공통요소 = 위치, 이름 -> 위치 : 값[i :: 100] / 이름 & 값의 위치 동일 
+# 열별 모아서 배열 안에 저장해줌
+strengths = np.column_stack([
+    strength1,
+    strength2,
+    strength3
+])
 
-keys = parts[:,0]
-values = parts[:,1].astype(int)
+strengths_mean =np.round(np.mean(strengths, axis=1),3) #각 행별 평균
+
 # 3-1 parts_to_work_on.csv
 try:
  with open("parts_to_work_on.csv", mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
- 
     for i in range(100):
-     mean = np.mean(values[i::100])  
+     mean=strengths_mean[i] 
      if 50.0 > (mean):
-      writer.writerow([keys[i],round(mean,3)])
+      writer.writerow([parts[i],mean])
     print("저장 완료")
 
 except OSError as e:
