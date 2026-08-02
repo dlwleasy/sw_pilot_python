@@ -2,7 +2,7 @@ import random
 
 class DummySensor:
 
-    def init(self):
+    def __init__(self):
         # 멤버(인스턴스 변수)로 env_values 사전 객체를 초기화
         self.env_values = {
             'mars_base_internal_temperature': None,
@@ -25,10 +25,10 @@ class DummySensor:
     def get_env(self):
         return self.env_values
 
-# ummySensor 클래스를 ds라는 이름으로 인스턴스(Instance)로 만든다.인스턴스화 한 DummySensor 클래스에서 set_env()와 get_env()를 차례로 호출해서값을 확인한다.
-
-# 전체 코드를 mars_mission_computer.py 파일로 저장한다.
 
 ds=DummySensor() #instance
 ds.set_env()
 get=ds.get_env()
+
+
+

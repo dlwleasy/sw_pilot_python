@@ -29,6 +29,7 @@ class MissionComputer:
             if ans =="y":
                 continue
             elif ans =="n":
+                print("System stopped")
                 break
             else:
                 print("y또는 n만 입력해주세요.") 
@@ -63,9 +64,5 @@ ds=DummySensor()
 RunComputer=MissionComputer() # 인스턴스화
 RunComputer.get_sensor_data() 
 
-# 현재코드 파일 저장
-with open(__file__, 'r', encoding='utf-8') as current_file:
-    code_content = current_file.read()
-with open('mars_mission_computer.py', 'w', encoding='utf-8') as target_file:
-    target_file.write(code_content)
+
 
